@@ -47,7 +47,8 @@ export function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
       {/* Navigation */}
       <nav className="flex-1 space-y-1 overflow-y-auto p-3 lg:p-4">
         {NAV_ITEMS.filter((item) => !item.adminOnly || userRole === 'ADMIN').map((item) => {
-          const Icon = (Icons as Record<string, React.ElementType>)[item.icon] || Icons.Circle;
+          const Icon =
+            (Icons as unknown as Record<string, React.ElementType>)[item.icon] || Icons.Circle;
           // Simple exact match or starts-with for nested routes (excluding /dashboard matching everything)
           const isActive =
             pathname === item.href ||
